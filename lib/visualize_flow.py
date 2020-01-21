@@ -87,7 +87,7 @@ def plt_flow_density(prior_logdensity, inverse_transform, ax, npts=100, memory=1
     ax.set_title(title)
 
 
-def plt_flow_samples(prior_sample, transform, ax, npts=100, memory=100, title="$x ~ q(x)$", device="cpu"):
+def plt_flow_samples(prior_sample, transform, ax, npts=100, memory=100, title="$x$ ~ $q(x)$", device="cpu"):
     z = prior_sample(npts * npts, 2).type(torch.float32).to(device)
     zk = []
     inds = torch.arange(0, z.shape[0]).to(torch.int64)
@@ -101,7 +101,7 @@ def plt_flow_samples(prior_sample, transform, ax, npts=100, memory=100, title="$
     ax.set_title(title)
 
 
-def plt_samples(samples, ax, npts=100, title="$x ~ p(x)$"):
+def plt_samples(samples, ax, npts=100, title="$x$ ~ $p(x)$"):
     ax.hist2d(samples[:, 0], samples[:, 1], range=[[LOW, HIGH], [LOW, HIGH]], bins=npts)
     ax.invert_yaxis()
     ax.get_xaxis().set_ticks([])
