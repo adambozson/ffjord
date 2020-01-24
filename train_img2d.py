@@ -2,6 +2,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+matplotlib.rcParams['image.cmap'] = 'cool'
+
 import argparse
 import os
 import time
@@ -236,7 +238,7 @@ if __name__ == '__main__':
                     p_samples, torch.randn, standard_normal_logprob, transform=sample_fn, inverse_transform=density_fn,
                     samples=True, npts=800, device=device
                 )
-                fig_filename = os.path.join(args.save, 'figs', '{:04d}.png'.format(itr))
+                fig_filename = os.path.join(args.save, 'figs', '{:02d}.png'.format(itr / 100))
                 utils.makedirs(os.path.dirname(fig_filename))
                 plt.savefig(fig_filename)
                 plt.close()

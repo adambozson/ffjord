@@ -67,7 +67,7 @@ def save_trajectory(model, data_samples, savedir, ntimes=101, memory=0.01, devic
                 ax.invert_yaxis()
                 ax.get_xaxis().set_ticks([])
                 ax.get_yaxis().set_ticks([])
-                ax.set_title("Target", fontsize=32)
+                ax.set_title("Target", fontsize=18)
 
                 # plot the density
                 ax = plt.subplot(2, 2, 2, aspect="equal")
@@ -86,7 +86,7 @@ def save_trajectory(model, data_samples, savedir, ntimes=101, memory=0.01, devic
                 ax.invert_yaxis()
                 ax.get_xaxis().set_ticks([])
                 ax.get_yaxis().set_ticks([])
-                ax.set_title("Density", fontsize=32)
+                ax.set_title("Density", fontsize=18)
 
                 # plot the samples
                 ax = plt.subplot(2, 2, 3, aspect="equal")
@@ -96,10 +96,11 @@ def save_trajectory(model, data_samples, savedir, ntimes=101, memory=0.01, devic
                 ax.invert_yaxis()
                 ax.get_xaxis().set_ticks([])
                 ax.get_yaxis().set_ticks([])
-                ax.set_title("Samples", fontsize=32)
+                ax.set_title("Samples", fontsize=18)
 
                 # plot vector field
                 ax = plt.subplot(2, 2, 4, aspect="equal")
+                ax.invert_yaxis()
 
                 K = 13j
                 y, x = np.mgrid[-4:4:K, -4:4:K]
@@ -113,12 +114,12 @@ def save_trajectory(model, data_samples, savedir, ntimes=101, memory=0.01, devic
                 logmag = 2 * np.log(np.hypot(dydt[:, :, 0], dydt[:, :, 1]))
                 ax.quiver(
                     x, y, dydt[:, :, 0], dydt[:, :, 1],
-                    np.exp(logmag), cmap="coolwarm", scale=20., width=0.015, pivot="mid"
+                    np.exp(logmag), cmap="coolwarm", scale=30., width=0.015, pivot="mid"
                 )
                 ax.set_xlim(-4, 4)
                 ax.set_ylim(-4, 4)
                 ax.axis("off")
-                ax.set_title("Vector Field", fontsize=32)
+                ax.set_title("Vector Field", fontsize=18)
 
                 makedirs(savedir)
                 plt.savefig(os.path.join(savedir, f"viz-{t:05d}.png"))
