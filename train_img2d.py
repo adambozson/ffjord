@@ -236,7 +236,7 @@ if __name__ == '__main__':
                     p_samples, torch.randn, standard_normal_logprob, transform=sample_fn, inverse_transform=density_fn,
                     samples=True, npts=800, device=device
                 )
-                fig_filename = os.path.join(args.save, 'figs', '{:04d}.jpg'.format(itr))
+                fig_filename = os.path.join(args.save, 'figs', '{:04d}.png'.format(itr))
                 utils.makedirs(os.path.dirname(fig_filename))
                 plt.savefig(fig_filename)
                 plt.close()
@@ -250,4 +250,4 @@ if __name__ == '__main__':
     logger.info('Plotting trajectory to {}'.format(save_traj_dir))
     data_samples = sample_data(args.data, batch_size=2000)
     save_trajectory(model, data_samples, save_traj_dir, device=device)
-    trajectory_to_video(save_traj_dir)
+    # trajectory_to_video(save_traj_dir)
